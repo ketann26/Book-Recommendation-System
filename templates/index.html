@@ -5,15 +5,47 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Book Recommendation</title>
+
+		<style>
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+				background-color: #a2a2a2;
+			}
+			#title {
+				width: 200px;
+			}
+
+			#title option {
+				max-width: 100px;
+			}
+
+			.container {
+				margin: auto;
+				margin-top: 100px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 60%;
+				border: 1px solid red;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Book Recommender</h1>
-		<form method="post" action="/recommend">
-			<input type="text" name="title" placeholder="Enter Title" />
-			<input type="submit" name="submit" value="Submit" />
-		</form>
-		{% if res %} {% for book in res %}
-		<p>{{ book }}</p>
-		{% endfor %} {% endif %}
+		<div class="container">
+			<h1>Book Recommender</h1>
+			<form method="post" action="/recommend">
+				<select name="title" id="title" />
+				<option value="" selected disabled>Select a book</option>
+				{% for book in title_list%}
+				<option value="{{ book }}">{{ book }}</option>
+				{% endfor %}
+				<input type="submit" name="submit" value="Submit" />
+			</form>
+			{% if res %}
+			<h4>If you liked "{{ book_title }}", you may also like:</h4>
+			{% for book in res %}
+			<p>{{ book }}</p>
+			{% endfor %} {% endif %}
+		</div>
 	</body>
 </html>
