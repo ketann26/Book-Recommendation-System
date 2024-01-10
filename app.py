@@ -30,5 +30,5 @@ def recommend():
     return render_template("index.html", res=res, title_list=title_list, book_title=title)
 
 if __name__=="__main__":
-    app.run(host='0.0.0.0',port=8080)
-    # app.run(debug=True)
+    # app.run(host='0.0.0.0',port=8080)
+    app.run(debug=True)
